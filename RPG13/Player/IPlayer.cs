@@ -7,10 +7,13 @@ namespace RPG13.Player
     {
         int Health { get; }
         int Intelligence { get; }
-        IWeapon MeleeWeapon { get; set; }
         string Name { get; }
-        IRangedWeapon RangedWeapon { get; set; }
         int Strength { get; }
+        int DamageDone { get; }
+        int EnemiesKilled { get; }
+        IWeapon MeleeWeapon { get; set; }
+        IRangedWeapon RangedWeapon { get; set; }
+
 
         void Attack(IEnemy enemy);
 
@@ -21,9 +24,5 @@ namespace RPG13.Player
         void TakeDamage(int damage);
 
         string ToString();
-
-        int DamageDone { get; }
-
-        int EnemiesKilled { get; }  
     }
 }

@@ -7,8 +7,8 @@ namespace RPG13.Player
 {
     public abstract class Player : IPlayer
     {
-        protected ILogger logger;
-        protected IDiceService diceService;
+        protected ILogger Logger;
+        protected IDiceService DiceService;
 
         public int DamageDone { get; private set; }
         public int EnemiesKilled { get; private set; }
@@ -19,13 +19,13 @@ namespace RPG13.Player
         public IRangedWeapon RangedWeapon { get; set; }
         public int Strength { get; protected set; }
 
-        public Player(string name)
+        public Player(IDiceService diceService, ILogger logger, string name)
         {
-            diceService = new DiceService();
-            logger = new ConsoleLogger();
+            DiceService = diceService;
+            Logger = logger;
 
             Name = name;
-            logger.Log($"Player {Name} entered the fight!");
+            Logger.Log($"Player {Name} entered the fight!");
         }
 
         public void Attack(IEnemy enemy)
@@ -33,7 +33,7 @@ namespace RPG13.Player
             int meleeDamage = MeleeWeapon?.Damage * Strength ?? 0;
             int rangedDamage = RangedWeapon?.Damage * Intelligence ?? 0;
 
-            logger.Log($"Player {Name} prepares to do {meleeDamage} points " +
+            Logger.Log($"Player {Name} prepares to do {meleeDamage} points " +
                 $"of melee and {rangedDamage} points of magical damage");
 
             int totalDamage = meleeDamage + rangedDamage;
@@ -64,14 +64,14 @@ namespace RPG13.Player
                     throw new ArgumentOutOfRangeException(nameof(weapon));
             }
 
-            logger.Log($"{Name} picked up a {weapon.Name}");
-            logger.Log($"Currently equipped: {MeleeWeapon?.Name}, {RangedWeapon?.Name}");
+            Logger.Log($"{Name} picked up a {weapon.Name}");
+            Logger.Log($"Currently equipped: {MeleeWeapon?.Name}, {RangedWeapon?.Name}");
         }
 
         public void TakeDamage(int damage)
         {
             Health -= damage;
-            logger.Log($"{Name} took damage! Health remaining: {Health}");
+            Logger.Log($"{Name} took damage! Health remaining: {Health}");
 
             if (Health < 0)
             {

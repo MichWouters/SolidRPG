@@ -1,22 +1,22 @@
-﻿using RPG13.Player;
+﻿using RPG13.Factories.Interfaces;
+using RPG13.Logging;
+using RPG13.Player;
 using RPG13.Services;
 
 namespace RPG13.Enemies
 {
     public class GoblinThief : Enemy
     {
-        private IRandomService randomService;
-
-        public GoblinThief(): base("Sneaky Goblin")
+        public GoblinThief(IRandomService randomService, IWeaponsFactory weaponsFactory, ILogger logger)
+            : base(randomService, weaponsFactory, logger, "Sneaky Goblin")
         {
-            randomService = new RandomService();
             MinDamage = 1;
             Health = 10;
         }
 
         public override void TakeDamage(int damage)
         {
-            bool canDodge = randomService.RollForSuccess(15);
+            bool canDodge = RandomService.RollForSuccess(15);
 
             if (!canDodge)
             {
@@ -26,12 +26,12 @@ namespace RPG13.Enemies
 
         public override void Attack(IPlayer player)
         {
-            bool isCriticalHit = randomService.RollForSuccess(25);
+            bool isCriticalHit = RandomService.RollForSuccess(25);
 
             if (isCriticalHit)
             {
-                int damage = randomService.GetRandomValue(MinDamage, MaxDamage);
-                logger.Log($"{Name} landed a critical hit! Double damage!");
+                int damage = RandomService.GetRandomValue(MinDamage, MaxDamage);
+                Logger.Log($"{Name} landed a critical hit! Double damage!");
                 player.TakeDamage(damage * 2);
             }
             else

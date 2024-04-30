@@ -1,14 +1,17 @@
-﻿namespace RPG13.Player
+﻿using RPG13.Logging;
+using RPG13.Service;
+
+namespace RPG13.Player
 {
     public class Human : Player
     {
-        public Human(string name) : base(name)
+        public Human(IDiceService diceService, ILogger logger, string name) : base(diceService, logger, name)
         {
-            Strength = diceService.RollTheDices().Sum();
-            Intelligence = diceService.RollTheDices().Sum();
-            Health = diceService.RollTheDices().Sum();
+            Strength = DiceService.RollTheDices().Sum();
+            Intelligence = DiceService.RollTheDices().Sum();
+            Health = DiceService.RollTheDices().Sum();
 
-            logger.Log(this.ToString());
+            Logger.Log(this.ToString());
         }
     }
 }

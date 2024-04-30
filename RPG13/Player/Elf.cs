@@ -1,14 +1,17 @@
-﻿namespace RPG13.Player
+﻿using RPG13.Logging;
+using RPG13.Service;
+
+namespace RPG13.Player
 {
     public class Elf : Player
     {
-        public Elf(string name) : base(name)
+        public Elf(IDiceService diceService, ILogger logger, string name) : base(diceService, logger, name)
         {
-            Strength = diceService.RollTheDices(1).Sum();
-            Intelligence = diceService.RollTheDices(3).Sum();
-            Health = diceService.RollTheDices(2).Sum();
+            Strength = DiceService.RollTheDices(1).Sum();
+            Intelligence = DiceService.RollTheDices(3).Sum();
+            Health = DiceService.RollTheDices(2).Sum();
 
-            logger.Log(this.ToString());
+            Logger.Log(this.ToString());
         }
     }
 }
