@@ -4,9 +4,9 @@
     {
         private Random random = new Random();
 
-        public int GetRandomValue(int minDamage, int maxDamage)
+        public int GetRandomValue(int minValue, int maxValue)
         {
-            return random.Next(minDamage, maxDamage + 1);
+            return random.Next(minValue, maxValue + 1);
         }
 
         public bool RollForSuccess(int chanceOfSuccess)

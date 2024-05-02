@@ -7,11 +7,11 @@ namespace RPG13.Player
     {
         public Elf(IDiceService diceService, ILogger logger, string name) : base(diceService, logger, name)
         {
-            Strength = DiceService.RollTheDices(1).Sum();
-            Intelligence = DiceService.RollTheDices(3).Sum();
-            Health = DiceService.RollTheDices(2).Sum();
+            Strength = _diceService.RollTheDices(1).Sum();
+            Intelligence = _diceService.RollTheDices(3).Sum();
+            Health = _diceService.RollTheDices(2).Sum();
 
-            Logger.Log(this.ToString());
+            _logger.Log(this.ToString());
         }
     }
 }

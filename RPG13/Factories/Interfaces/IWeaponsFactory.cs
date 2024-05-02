@@ -6,6 +6,7 @@ namespace RPG13.Factories.Interfaces
     public interface IWeaponsFactory
     {
         IWeapon GetRandomLoot(int maxLootLevel);
+
         IWeapon GetWeapon(WeaponEnum type);
     }
 }

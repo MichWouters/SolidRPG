@@ -14,7 +14,6 @@ namespace RPG13.Player
         IWeapon MeleeWeapon { get; set; }
         IRangedWeapon RangedWeapon { get; set; }
 
-
         void Attack(IEnemy enemy);
 
         void Die();

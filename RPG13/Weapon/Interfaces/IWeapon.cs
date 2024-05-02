@@ -6,7 +6,7 @@
         int MinIntelligence { get; }
         int MinStrength { get; }
         WeaponType WeaponType { get; }
-        
+
         string Name { get; }
     }
 }

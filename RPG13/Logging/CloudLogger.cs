@@ -1,10 +1,10 @@
 ﻿namespace RPG13.Logging
 {
-    public class ConsoleLogger : ILogger
+    internal class CloudLogger : ILogger
     {
         public void Log(string message)
         {
-            Console.WriteLine(message);
+            Console.WriteLine($"Logging to cloud:  {message}.");
         }
 
         public void LogEmptyLine()
@@ -14,9 +14,7 @@
 
         public void LogError(string message)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(message);
-            Console.ResetColor();
+            Console.WriteLine($"Logging to cloud: ERROR  {message}.");
         }
     }
 }

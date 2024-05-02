@@ -35,12 +35,16 @@ namespace RPG13.Factories
             {
                 case WeaponEnum.Dagger:
                     return new Dagger();
+
                 case WeaponEnum.Spear:
                     return new Spear();
+
                 case WeaponEnum.Sword:
                     return new Sword();
+
                 case WeaponEnum.IceStaff:
                     return new IceStaff();
+
                 default: throw new ArgumentOutOfRangeException();
             }
         }

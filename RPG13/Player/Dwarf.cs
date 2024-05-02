@@ -7,11 +7,11 @@ namespace RPG13.Player
     {
         public Dwarf(IDiceService diceService, ILogger logger, string name) : base(diceService, logger, name)
         {
-            Strength = DiceService.RollTheDices(3).Sum();
-            Intelligence = DiceService.RollTheDices(1).Sum();
-            Health = DiceService.RollTheDices(4).Sum();
+            Strength = _diceService.RollTheDices(3).Sum();
+            Intelligence = _diceService.RollTheDices(1).Sum();
+            Health = _diceService.RollTheDices(4).Sum();
 
-            Logger.Log(this.ToString());
+            _logger.Log(this.ToString());
         }
     }
 }

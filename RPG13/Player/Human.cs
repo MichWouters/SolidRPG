@@ -7,11 +7,11 @@ namespace RPG13.Player
     {
         public Human(IDiceService diceService, ILogger logger, string name) : base(diceService, logger, name)
         {
-            Strength = DiceService.RollTheDices().Sum();
-            Intelligence = DiceService.RollTheDices().Sum();
-            Health = DiceService.RollTheDices().Sum();
+            Strength = _diceService.RollTheDices().Sum();
+            Intelligence = _diceService.RollTheDices().Sum();
+            Health = _diceService.RollTheDices().Sum();
 
-            Logger.Log(this.ToString());
+            _logger.Log(this.ToString());
         }
     }
 }

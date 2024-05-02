@@ -2,7 +2,7 @@
 {
     public interface IDiceService
     {
-        int RollDice();
+        int RollDice(int maxSides = 6);
 
         int[] RollTheDices(int amount = 2);
     }

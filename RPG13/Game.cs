@@ -1,5 +1,4 @@
 ﻿using RPG13.Enemies;
-using RPG13.Factories;
 using RPG13.Factories.Interfaces;
 using RPG13.Logging;
 using RPG13.Player;
@@ -12,6 +11,7 @@ namespace RPG13
     {
         // 1. Dependencies declareren we altijd bovenaan de klasse
         private ILogger Logger;
+
         private IEnemyFactory EnemyFactory;
         private IWeaponsFactory WeaponsFactory;
         private IPlayerFactory PlayerFactory;
@@ -55,11 +55,11 @@ namespace RPG13
             return player;
         }
 
-        public void StartGame(ILogger logger)
+        public void StartGame()
         {
-            logger.Log("The dungeon lies before you!");
-            logger.Log($"Pick your character.{Environment.NewLine}1. Human{Environment.NewLine}2. Elf{Environment.NewLine}3. Dwarf");
-            logger.LogEmptyLine();
+            Logger.Log("The dungeon lies before you!");
+            Logger.Log($"Pick your character.{Environment.NewLine}1. Human{Environment.NewLine}2. Elf{Environment.NewLine}3. Dwarf");
+            Logger.LogEmptyLine();
         }
     }
 }

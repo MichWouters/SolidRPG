@@ -8,9 +8,9 @@ namespace RPG13.Enemies
 {
     public abstract class Enemy : IEnemy
     {
-        protected IRandomService RandomService;
-        protected IWeaponsFactory WeaponsFactory;
-        protected ILogger Logger;
+        protected IRandomService _randomService;
+        protected IWeaponsFactory _weaponsFactory;
+        protected ILogger _logger;
 
         public int Health { get; protected set; } = 20;
         public int MaxDamage { get; protected set; }
@@ -19,9 +19,9 @@ namespace RPG13.Enemies
 
         public Enemy(IRandomService randomService, IWeaponsFactory weaponsFactory, ILogger logger, string name)
         {
-            WeaponsFactory = weaponsFactory;
-            RandomService = randomService;
-            Logger = logger;
+            _weaponsFactory = weaponsFactory;
+            _randomService = randomService;
+            _logger = logger;
 
             Name = name;
             logger.Log($"A wild {Name} appeared!");
@@ -29,30 +29,28 @@ namespace RPG13.Enemies
 
         public virtual void Attack(IPlayer player)
         {
-            int damage = RandomService.GetRandomValue(MinDamage, MaxDamage);
+            int damage = _randomService.GetRandomValue(MinDamage, MaxDamage);
             player.TakeDamage(damage);
         }
 
         public IWeapon? Die(int maxLootLevel = 3)
         {
-            Logger.Log($"{Name} died!");
-            if (RandomService.RollForSuccess(40))
+            _logger.Log($"{Name} died!");
+            if (_randomService.RollForSuccess(40))
             {
                 IWeapon loot = DropLoot(maxLootLevel);
-                Logger.Log($"{Name} dropped loot! Found a {loot.Name}");
+                _logger.Log($"{Name} dropped loot! Found a {loot.Name}");
                 return loot;
             }
             else
             {
                 return null;
             }
-
-            
         }
 
         public virtual void TakeDamage(int damage)
         {
-            Logger.Log($"{Name} took {damage} damage! Health remaining: {Health}");
+            _logger.Log($"{Name} took {damage} damage! Health remaining: {Health}");
             Health -= damage;
             if (Health <= 0)
             {
@@ -62,7 +60,7 @@ namespace RPG13.Enemies
 
         protected virtual IWeapon DropLoot(int maxLevel)
         {
-            return WeaponsFactory.GetRandomLoot(maxLevel);
+            return _weaponsFactory.GetRandomLoot(maxLevel);
         }
     }
 }

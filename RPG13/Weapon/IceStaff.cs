@@ -4,7 +4,6 @@ namespace RPG13.Weapon
 {
     public class IceStaff : IRangedWeapon
     {
-
         public string Name { get; } = "Ice Staff. Brrr";
         public int Damage => 6;
 

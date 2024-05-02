@@ -26,7 +26,7 @@ namespace RPG13.Factories
                     return new Goblin(randomService, weaponsFactory, logger);
 
                 case EnemyType.GoblinThief:
-                    return new GoblinThief(randomService, weaponsFactory, logger) ;
+                    return new GoblinThief(randomService, weaponsFactory, logger);
 
                 case EnemyType.GoblinWithShield:
                     return new GoblinWithShield(randomService, weaponsFactory, logger);

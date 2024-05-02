@@ -16,7 +16,7 @@ namespace RPG13.Enemies
 
         public override void TakeDamage(int damage)
         {
-            bool canDodge = RandomService.RollForSuccess(15);
+            bool canDodge = _randomService.RollForSuccess(15);
 
             if (!canDodge)
             {
@@ -26,12 +26,12 @@ namespace RPG13.Enemies
 
         public override void Attack(IPlayer player)
         {
-            bool isCriticalHit = RandomService.RollForSuccess(25);
+            bool isCriticalHit = _randomService.RollForSuccess(25);
 
             if (isCriticalHit)
             {
-                int damage = RandomService.GetRandomValue(MinDamage, MaxDamage);
-                Logger.Log($"{Name} landed a critical hit! Double damage!");
+                int damage = _randomService.GetRandomValue(MinDamage, MaxDamage);
+                _logger.Log($"{Name} landed a critical hit! Double damage!");
                 player.TakeDamage(damage * 2);
             }
             else

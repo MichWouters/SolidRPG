@@ -7,8 +7,8 @@ namespace RPG13.Player
 {
     public abstract class Player : IPlayer
     {
-        protected ILogger Logger;
-        protected IDiceService DiceService;
+        protected ILogger _logger;
+        protected IDiceService _diceService;
 
         public int DamageDone { get; private set; }
         public int EnemiesKilled { get; private set; }
@@ -21,11 +21,11 @@ namespace RPG13.Player
 
         public Player(IDiceService diceService, ILogger logger, string name)
         {
-            DiceService = diceService;
-            Logger = logger;
+            _diceService = diceService;
+            _logger = logger;
 
             Name = name;
-            Logger.Log($"Player {Name} entered the fight!");
+            _logger.Log($"Player {Name} entered the fight!");
         }
 
         public void Attack(IEnemy enemy)
@@ -33,7 +33,7 @@ namespace RPG13.Player
             int meleeDamage = MeleeWeapon?.Damage * Strength ?? 0;
             int rangedDamage = RangedWeapon?.Damage * Intelligence ?? 0;
 
-            Logger.Log($"Player {Name} prepares to do {meleeDamage} points " +
+            _logger.Log($"Player {Name} prepares to do {meleeDamage} points " +
                 $"of melee and {rangedDamage} points of magical damage");
 
             int totalDamage = meleeDamage + rangedDamage;
@@ -43,7 +43,7 @@ namespace RPG13.Player
 
         public void Die()
         {
-            throw new NotImplementedException();
+            _logger.Log($"Player {Name} died!");
         }
 
         public void PickUpWeapon(IWeapon weapon, bool pickup = true)
@@ -64,14 +64,14 @@ namespace RPG13.Player
                     throw new ArgumentOutOfRangeException(nameof(weapon));
             }
 
-            Logger.Log($"{Name} picked up a {weapon.Name}");
-            Logger.Log($"Currently equipped: {MeleeWeapon?.Name}, {RangedWeapon?.Name}");
+            _logger.Log($"{Name} picked up a {weapon.Name}");
+            _logger.Log($"Currently equipped: {MeleeWeapon?.Name}, {RangedWeapon?.Name}");
         }
 
         public void TakeDamage(int damage)
         {
             Health -= damage;
-            Logger.Log($"{Name} took damage! Health remaining: {Health}");
+            _logger.Log($"{Name} took damage! Health remaining: {Health}");
 
             if (Health < 0)
             {
