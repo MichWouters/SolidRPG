@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using RPG13.Business.Logging;
 using RPG13.Factories;
 using RPG13.Factories.Interfaces;
 using RPG13.Logging;
