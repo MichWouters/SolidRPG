@@ -13,7 +13,7 @@ namespace RPG13.Business.Player
         int EnemiesKilled { get; }
         IWeapon MeleeWeapon { get; set; }
         IRangedWeapon RangedWeapon { get; set; }
-        object? Potions { get; set; }
+        int Potions { get; set; }
 
         void Attack(IEnemy enemy);
 
