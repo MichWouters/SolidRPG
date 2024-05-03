@@ -19,6 +19,7 @@ namespace RPG13.Business.Player
         public string Name { get; protected set; }
         public IRangedWeapon RangedWeapon { get; set; }
         public int Strength { get; protected set; }
+        public int Potions { get; set; }
 
         public Player(IDiceService diceService, ILogger logger, string name)
         {
@@ -27,6 +28,8 @@ namespace RPG13.Business.Player
 
             Name = name;
             _logger.Log($"Player {Name} entered the fight!");
+
+            Potions = 3;
         }
 
         public void Attack(IEnemy enemy)
@@ -83,6 +86,15 @@ namespace RPG13.Business.Player
         public override string ToString()
         {
             return $"Health: {Health}, Strength: {Strength}, Intelligence: {Intelligence}, Melee: {MeleeWeapon}, Ranged: {RangedWeapon}";
+        }
+
+        public void DrinkPotion(int potionHealValue)
+        {
+            if (Potions > 0)
+            {
+                Health += potionHealValue;
+                Potions--;
+            }
         }
     }
 }
