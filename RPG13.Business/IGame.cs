@@ -1,9 +1,12 @@
-﻿using RPG13.Business.Player;
+﻿using RPG13.Business.Logging;
+using RPG13.Business.Player;
 
 namespace RPG13.Business
 {
     public interface IGame
     {
+        ILogger Logger { get; }
+
         void CreateAndEquipDefaultWeapon(IPlayer player);
 
         IPlayer CreatePlayer();

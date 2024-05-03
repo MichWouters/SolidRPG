@@ -5,7 +5,7 @@ namespace RPG13.Business.Player
 {
     public interface IPlayer
     {
-        int Health { get; }
+        int Health { get; set; }
         int Intelligence { get; }
         string Name { get; }
         int Strength { get; }

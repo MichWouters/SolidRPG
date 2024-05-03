@@ -11,7 +11,7 @@ namespace RPG13.Business
     public class Game : IGame
     {
         // 1. Dependencies declareren we altijd bovenaan de klasse
-        private ILogger Logger;
+        public ILogger Logger { get; private set; }
         private IUserInteraction UserInteraction;
         private IEnemyFactory EnemyFactory;
         private IWeaponsFactory WeaponsFactory;

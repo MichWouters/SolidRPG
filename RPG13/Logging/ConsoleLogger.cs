@@ -4,9 +4,10 @@ namespace RPG13.Logging
 {
     public class ConsoleLogger : ILogger
     {
-        public void Log(string message)
+        public string Log(string message)
         {
             Console.WriteLine(message);
+            return message;
         }
 
         public void LogEmptyLine()

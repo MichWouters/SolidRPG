@@ -13,7 +13,7 @@ namespace RPG13.Business.Player
 
         public int DamageDone { get; private set; }
         public int EnemiesKilled { get; private set; }
-        public int Health { get; protected set; }
+        public int Health { get; set; }
         public int Intelligence { get; protected set; }
         public IWeapon MeleeWeapon { get; set; }
         public string Name { get; protected set; }
@@ -39,7 +39,7 @@ namespace RPG13.Business.Player
 
             int totalDamage = meleeDamage + rangedDamage;
             enemy.TakeDamage(totalDamage);
-            DamageDone += rangedDamage;
+            DamageDone += totalDamage;
         }
 
         public void Die()

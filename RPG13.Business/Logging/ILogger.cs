@@ -2,7 +2,7 @@
 {
     public interface ILogger
     {
-        void Log(string message);
+        string Log(string message);
 
         void LogEmptyLine();
 
