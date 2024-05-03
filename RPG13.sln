@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG13.Business", "RPG13.Bus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG13.Forms", "RPG13.Forms\RPG13.Forms.csproj", "{88284667-D657-4BD9-BE21-BD0CC53F446D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG13.Business.Tests", "RPG13.Business.Tests\RPG13.Business.Tests.csproj", "{E318233D-94ED-454D-99E7-C7923CD0FD04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{88284667-D657-4BD9-BE21-BD0CC53F446D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88284667-D657-4BD9-BE21-BD0CC53F446D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88284667-D657-4BD9-BE21-BD0CC53F446D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E318233D-94ED-454D-99E7-C7923CD0FD04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E318233D-94ED-454D-99E7-C7923CD0FD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E318233D-94ED-454D-99E7-C7923CD0FD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E318233D-94ED-454D-99E7-C7923CD0FD04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
