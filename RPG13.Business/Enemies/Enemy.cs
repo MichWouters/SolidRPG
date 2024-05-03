@@ -12,7 +12,7 @@ namespace RPG13.Business.Enemies
         protected IWeaponsFactory _weaponsFactory;
         protected ILogger _logger;
 
-        public int Health { get; protected set; } = 20;
+        public int Health { get; set; } = 20;
         public int MaxDamage { get; protected set; }
         public int MinDamage { get; protected set; }
         public string Name { get; protected set; }

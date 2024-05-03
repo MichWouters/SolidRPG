@@ -5,7 +5,7 @@ namespace RPG13.Business.Enemies
 {
     public interface IEnemy
     {
-        int Health { get; }
+        int Health { get; set; }
         int MaxDamage { get; }
         int MinDamage { get; }
         string Name { get; }
