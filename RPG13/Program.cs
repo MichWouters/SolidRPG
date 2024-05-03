@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RPG13;
-using RPG13.Player;
+using RPG13.Business;
+using RPG13.Business.Player;
 
 // 3. Dependencies are initialised at the TOP of the application
 //ILogger logger = new CloudLogger();

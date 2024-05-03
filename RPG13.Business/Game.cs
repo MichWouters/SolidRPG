@@ -2,6 +2,7 @@
 using RPG13.Business.Factories.Interfaces;
 using RPG13.Business.Logging;
 using RPG13.Business.Player;
+using RPG13.Business.Services;
 using RPG13.Business.Weapon;
 using RPG13.Business.Weapon.Interfaces;
 
@@ -11,18 +12,19 @@ namespace RPG13.Business
     {
         // 1. Dependencies declareren we altijd bovenaan de klasse
         private ILogger Logger;
-
+        private IUserInteraction UserInteraction;
         private IEnemyFactory EnemyFactory;
         private IWeaponsFactory WeaponsFactory;
         private IPlayerFactory PlayerFactory;
 
         // 2. Dependencies initialiseren / injecteren we in de constructor
-        public Game(ILogger logger, IEnemyFactory enemyFactory, IWeaponsFactory weaponsFactory, IPlayerFactory playerFactory)
+        public Game(ILogger logger, IEnemyFactory enemyFactory, IWeaponsFactory weaponsFactory, IPlayerFactory playerFactory, IUserInteraction userInteraction)
         {
             Logger = logger;
             EnemyFactory = enemyFactory;
             WeaponsFactory = weaponsFactory;
             PlayerFactory = playerFactory;
+            UserInteraction = userInteraction;
         }
 
         public void EndGame(IPlayer player)
@@ -30,7 +32,7 @@ namespace RPG13.Business
             Logger.LogEmptyLine();
             Logger.Log("Game over!");
             Logger.Log($"{player.Name} did {player.DamageDone} worth of damage and killed {player.EnemiesKilled} enemy(ies)");
-            Console.ReadLine();
+            UserInteraction.GetUserInput();
         }
 
         public void StartEncounter(IPlayer player)
@@ -49,7 +51,7 @@ namespace RPG13.Business
 
         public IPlayer CreatePlayer()
         {
-            int choice = int.Parse(Console.ReadLine());
+            int choice = int.Parse(UserInteraction.GetUserInput());
             PlayerType playerType = (PlayerType)choice;
             IPlayer player = PlayerFactory.Create(playerType);
             return player;
