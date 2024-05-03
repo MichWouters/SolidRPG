@@ -1,10 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using RPG13.Business;
+using RPG13.Business.Factories;
+using RPG13.Business.Factories.Interfaces;
 using RPG13.Business.Logging;
-using RPG13.Factories;
-using RPG13.Factories.Interfaces;
+using RPG13.Business.Service;
+using RPG13.Business.Services;
 using RPG13.Logging;
-using RPG13.Service;
 using RPG13.Services;
+
 
 namespace RPG13
 {
@@ -20,6 +23,7 @@ namespace RPG13
             services.AddScoped<IWeaponsFactory, WeaponsFactory>();
             services.AddScoped<IRandomService, RandomService>();
             services.AddScoped<IEnemyFactory, EnemyFactory>();
+            services.AddScoped<IUserInteraction, UserInteraction>();
 
             services.AddSingleton<IGame, Game>();
 

@@ -1,6 +1,6 @@
 ﻿using RPG13.Business.Logging;
 
-namespace RPG13.Business.Logging
+namespace RPG13.Logging
 {
     public class ConsoleLogger : ILogger
     {

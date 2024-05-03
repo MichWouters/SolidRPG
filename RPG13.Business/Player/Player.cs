@@ -1,6 +1,7 @@
 ﻿using RPG13.Business.Enemies;
 using RPG13.Business.Logging;
 using RPG13.Business.Service;
+using RPG13.Business.Weapon;
 using RPG13.Business.Weapon.Interfaces;
 
 namespace RPG13.Business.Player
